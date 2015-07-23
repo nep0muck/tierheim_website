@@ -17,8 +17,8 @@
     .form-group
         = f.input :race, input_html: { class: 'form-control' }
         
-    .form-group
-        = f.input :arrived_at, input_html: { class: 'form-control' }
+    .form-inline
+        = f.date_select :arrived_at, { :order => [:day, :month, :year] }, {:class => "form-control"}
         
     .form-group
         = f.input :description, input_html: { class: 'form-control' }
