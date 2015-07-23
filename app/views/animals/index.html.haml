@@ -1,0 +1,4 @@
+%h1 Unsere Einwohner
+= link_to "New Animal", new_animal_path
+- @animals.each do |animal|
+    %h2= link_to animal.name, animal

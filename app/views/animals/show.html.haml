@@ -1,0 +1,9 @@
+%h1= @animal.name
+%h2= @animal.type_of_animal
+%h2= @animal.race
+%p= @animal.arrived_at
+%p= @animal.description
+
+= link_to "Back", root_path
+= link_to "Edit", edit_animal_path
+= link_to "Delete", animal_path, method: :delete, data: { confirm: "Are you sure?" }
