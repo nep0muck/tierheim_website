@@ -3,6 +3,7 @@
 %h2= @animal.race
 %p= @animal.arrived_at
 %p= @animal.description
+%p eingestellt von #{ @animal.user.email }
 
 = link_to "Back", root_path
 = link_to "Edit", edit_animal_path

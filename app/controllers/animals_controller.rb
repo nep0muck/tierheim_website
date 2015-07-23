@@ -9,11 +9,11 @@ class AnimalsController < ApplicationController
     end
     
     def new
-       @animal = Animal.new 
+       @animal = current_user.animals.build 
     end
     
     def create
-        @animal = Animal.new(animal_params)
+        @animal = current_user.animals.build(animal_params)
         
         if @animal.save
             redirect_to @animal, notice: "Successfully created new Animal"
