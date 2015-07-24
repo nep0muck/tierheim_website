@@ -16,3 +16,16 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.full-img {
+    max-width: 100%;
+}
+
+.no-top-mg {
+    margin-top: 0;
+}
+
+.table-description tr td:first-child {
+    color: #888888;
+    text-align:right;
+}

@@ -1,11 +1,22 @@
-= image_tag @animal.image.url(:medium)
-%h1= @animal.name
-%h2= @animal.type_of_animal
-%h2= @animal.race
-%p= @animal.arrived_at
-%p= @animal.description
-%p eingestellt von #{ @animal.user.email }
-
-= link_to "Back", root_path
-= link_to "Edit", edit_animal_path
-= link_to "Delete", animal_path, method: :delete, data: { confirm: "Are you sure?" }
+.row
+    .col-md-12= image_tag @animal.image.url(:full), :class => 'full-img'
+    .col-md-12
+        %h1= @animal.name
+    .col-md-4
+        %table.table.table-description
+            %tr
+                %td Tierart
+                %td= @animal.type_of_animal
+            %tr
+                %td Rasse
+                %td= @animal.race
+            %tr
+                %td Aufnahme
+                %td= @animal.arrived_at
+            %tr
+                %td{:colspan => 2} eingestellt von #{ @animal.user.email }
+        .btn-group.pull-right
+            = link_to "Edit", edit_animal_path, class: 'btn btn-default'
+            = link_to "Delete", animal_path, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-default'
+    .col-md-8
+        = simple_format(@animal.description)

@@ -15,11 +15,29 @@ class AnimalsController < ApplicationController
     def create
         @animal = current_user.animals.build(animal_params)
         
-        if @animal.save
-            redirect_to @animal, notice: "Successfully created new Animal"
-        else
-            render 'new'
+        respond_to do |format|
+            if @animal.save
+                # redirect_to @animal, notice: "Successfully created new Animal"
+                
+                if params[:images]
+                    #===== The magic is here ;)
+                    params[:images].each { |image|
+                        @animal.pictures.create(image: image)
+                    }
+                end
+    
+                format.html { redirect_to @animal, notice: 'Animal was successfully created.' }
+                format.json { render json: @animal, status: :created, location: @animal }
+          
+            else
+                # render 'new'
+                format.html { render action: "new" }
+                format.json { render json: @animal.errors, status: :unprocessable_entity }
+            end
         end
+        
+       
+   
     end
     
     def edit
@@ -36,6 +54,19 @@ class AnimalsController < ApplicationController
     def destroy
         @animal.destroy
         redirect_to root_path
+        
+        
+        # AJAX, funktioniert noch nicht
+        # respond_to do |format|
+        #     if @animal.destroy
+        #         format.html { redirect_to root_path }
+        #         format.json @animal.as_json( :success => true )
+        #     else
+        #         flash[:notice] = "Animal failed to delete."
+        #         format.html { redirect_to root_path }
+        #         format.json @animal.as_json( :success => false )
+        #     end
+        # end
     end
     
     
