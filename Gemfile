@@ -24,6 +24,8 @@ gem 'simple_form', '~> 3.1.0'
 gem 'devise', '~> 3.5.1'
 # Fileuploading
 gem 'paperclip', '~> 4.3.0'
+# Required for multiple fileuploading http://5minutenpause.com/blog/2013/09/04/multiple-file-upload-with-jquery-rails-4-and-paperclip/
+gem 'jquery-fileupload-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

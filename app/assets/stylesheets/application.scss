@@ -29,3 +29,21 @@
     color: #888888;
     text-align:right;
 }
+
+
+// Flexbox for vertical alignment
+.vertical-align {
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
+  display: flex;
+  align-items: center; /* Align the flex-items vertically */
+  justify-content: center; /* Optional, to align inner
+                          flex-items horizontally within the column  */
+  flex-direction: column;
+}
+

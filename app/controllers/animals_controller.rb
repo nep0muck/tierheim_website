@@ -53,7 +53,7 @@ class AnimalsController < ApplicationController
     
     def destroy
         @animal.destroy
-        redirect_to root_path
+        redirect_to root_path, notice: "Animal was successfully deleted!"
         
         
         # AJAX, funktioniert noch nicht

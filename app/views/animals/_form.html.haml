@@ -1,4 +1,4 @@
-.col-md-12
+.row
     = simple_form_for @animal, html: { multipart: true } do |f|
         - if @animal.errors.any?
             #errors
@@ -38,4 +38,5 @@
             .form-group
                 = f.input :description, input_html: { class: 'form-control', :rows => 20 }
     
-        = f.button :submit, class: 'btn btn-primary'
+        .col-md-12
+            = f.button :submit, class: 'btn btn-primary'

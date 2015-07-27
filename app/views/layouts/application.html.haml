@@ -2,7 +2,7 @@
 %html
 %head
   %title Einwohner
-  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+  = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
   = csrf_meta_tags
 %body
@@ -20,6 +20,15 @@
           %li= link_to "Registrieren", new_user_registration_path
           %li= link_to "Einloggen", new_user_session_path
   .container
-    - flash.each do |name, msg|
-      = content_tag :div, msg, class: 'alert alert-info'
+    - flash.each do |type, content|
+      - if content.respond_to?('each') 
+        - content.each do |item|
+          = render 'layouts/alerts', 
+            type: type,
+            content: item
+      - else
+        = render 'layouts/alerts', 
+          type: type,
+          content: content
+
     = yield
